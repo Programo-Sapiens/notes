@@ -3,177 +3,178 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Structured Notes App</title>
+  <title>Structured Notes with Google Drive</title>
   <style>
     body { font-family: Arial, sans-serif; margin: 20px; }
-    h1 { text-align: center; }
-    #container { display: flex; gap: 20px; }
-    .panel { width: 30%; border: 1px solid #ccc; padding: 10px; border-radius: 5px; }
-    .panel h2 { font-size: 1.2rem; }
-    textarea, input[type="text"] { width: 100%; margin-bottom: 10px; padding: 5px; }
-    img { max-width: 100%; margin-top: 10px; }
-    button { padding: 5px 10px; margin-right: 5px; }
+    #bookList, #chapterList { margin: 10px 0; padding: 0; list-style: none; }
+    #bookList li, #chapterList li { cursor: pointer; margin: 5px 0; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+    textarea { width: 100%; height: 300px; margin-top: 10px; }
+    input, button { margin: 5px 0; padding: 5px 10px; }
   </style>
 </head>
 <body>
-  <h1>Structured Notes App</h1>
-  <div id="container">
-    <div class="panel">
-      <h2>Books</h2>
-      <input type="text" id="bookName" placeholder="Book Name">
-      <button onclick="addBook()">Add Book</button>
-      <ul id="bookList"></ul>
-    </div>
-    <div class="panel">
-      <h2>Chapters</h2>
-      <input type="text" id="chapterName" placeholder="Chapter Name">
-      <button onclick="addChapter()">Add Chapter</button>
-      <ul id="chapterList"></ul>
-    </div>
-    <div class="panel">
-      <h2>Sections</h2>
-      <input type="text" id="sectionName" placeholder="Section Name">
-      <button onclick="addSection()">Add Section</button>
-      <ul id="sectionList"></ul>
-    </div>
+  <h1>Structured Notes</h1>
+
+  <!-- Home Screen -->
+  <div id="homeScreen">
+    <h2>Books</h2>
+    <input type="text" id="newBookName" placeholder="Book Name">
+    <button onclick="createBook()">Create Book</button>
+    <ul id="bookList"></ul>
   </div>
-  <div class="panel" style="margin-top: 20px;">
-    <h2>Notes</h2>
-    <textarea id="noteText" placeholder="Write your note here..."></textarea>
-    <input type="file" id="imageInput">
-    <button onclick="addNote()">Add Note</button>
-    <div id="notes"></div>
+
+  <!-- Book Screen -->
+  <div id="bookScreen" style="display: none;">
+    <button onclick="goToHome()">Back to Books</button>
+    <h2 id="currentBookTitle"></h2>
+    <input type="text" id="newChapterName" placeholder="Chapter Name">
+    <button onclick="createChapter()">Create Chapter</button>
+    <ul id="chapterList"></ul>
+  </div>
+
+  <!-- Chapter Editor -->
+  <div id="chapterEditor" style="display: none;">
+    <button onclick="goToBook()">Back to Chapters</button>
+    <h2 id="currentChapterTitle"></h2>
+    <textarea id="chapterContent" oninput="autoSave()"></textarea>
+    <input type="file" id="imageInput" onchange="uploadImage()">
+    <div id="chapterImages"></div>
   </div>
 
   <script>
     let books = [];
     let currentBookIndex = null;
     let currentChapterIndex = null;
-    let currentSectionIndex = null;
 
-    const bookList = document.getElementById('bookList');
-    const chapterList = document.getElementById('chapterList');
-    const sectionList = document.getElementById('sectionList');
-    const notesDiv = document.getElementById('notes');
+    // Mock Google Drive API functions
+    const saveToDrive = async (fileName, content) => {
+      console.log(`Saving to Drive: ${fileName}`, content);
+      // Implement Google Drive API save logic here.
+    };
 
-    const saveData = () => localStorage.setItem('notesAppData', JSON.stringify(books));
-    const loadData = () => {
-      const data = JSON.parse(localStorage.getItem('notesAppData'));
-      if (data) books = data;
+    const loadFromDrive = async (fileName) => {
+      console.log(`Loading from Drive: ${fileName}`);
+      // Implement Google Drive API load logic here.
+      return null; // Mock return value
+    };
+
+    const uploadImageToDrive = async (file) => {
+      console.log(`Uploading image to Drive: ${file.name}`);
+      // Implement Google Drive API image upload logic here.
+      return URL.createObjectURL(file); // Mock URL for preview
+    };
+
+    // Navigation Functions
+    const goToHome = () => {
+      document.getElementById('homeScreen').style.display = 'block';
+      document.getElementById('bookScreen').style.display = 'none';
+      document.getElementById('chapterEditor').style.display = 'none';
+      renderBooks();
+    };
+
+    const goToBook = () => {
+      document.getElementById('homeScreen').style.display = 'none';
+      document.getElementById('bookScreen').style.display = 'block';
+      document.getElementById('chapterEditor').style.display = 'none';
+      renderChapters();
+    };
+
+    const goToEditor = () => {
+      document.getElementById('homeScreen').style.display = 'none';
+      document.getElementById('bookScreen').style.display = 'none';
+      document.getElementById('chapterEditor').style.display = 'block';
+      loadChapterContent();
+    };
+
+    // Book Management
+    const createBook = () => {
+      const name = document.getElementById('newBookName').value.trim();
+      if (!name) return alert('Book name is required!');
+      books.push({ name, chapters: [] });
+      saveToDrive('books.json', books);
       renderBooks();
     };
 
     const renderBooks = () => {
+      const bookList = document.getElementById('bookList');
       bookList.innerHTML = '';
       books.forEach((book, index) => {
         const li = document.createElement('li');
         li.textContent = book.name;
-        li.onclick = () => selectBook(index);
+        li.onclick = () => {
+          currentBookIndex = index;
+          goToBook();
+        };
         bookList.appendChild(li);
       });
     };
 
+    // Chapter Management
+    const createChapter = () => {
+      const name = document.getElementById('newChapterName').value.trim();
+      if (!name) return alert('Chapter name is required!');
+      books[currentBookIndex].chapters.push({ name, content: '', images: [] });
+      saveToDrive('books.json', books);
+      renderChapters();
+    };
+
     const renderChapters = () => {
+      const chapterList = document.getElementById('chapterList');
       chapterList.innerHTML = '';
-      if (currentBookIndex === null) return;
-      books[currentBookIndex].chapters.forEach((chapter, index) => {
+      const currentBook = books[currentBookIndex];
+      document.getElementById('currentBookTitle').textContent = currentBook.name;
+      currentBook.chapters.forEach((chapter, index) => {
         const li = document.createElement('li');
         li.textContent = chapter.name;
-        li.onclick = () => selectChapter(index);
+        li.onclick = () => {
+          currentChapterIndex = index;
+          goToEditor();
+        };
         chapterList.appendChild(li);
       });
     };
 
-    const renderSections = () => {
-      sectionList.innerHTML = '';
-      if (currentChapterIndex === null) return;
-      books[currentBookIndex].chapters[currentChapterIndex].sections.forEach((section, index) => {
-        const li = document.createElement('li');
-        li.textContent = section.name;
-        li.onclick = () => selectSection(index);
-        sectionList.appendChild(li);
+    // Chapter Editor
+    const loadChapterContent = () => {
+      const currentChapter = books[currentBookIndex].chapters[currentChapterIndex];
+      document.getElementById('currentChapterTitle').textContent = currentChapter.name;
+      document.getElementById('chapterContent').value = currentChapter.content;
+      renderImages();
+    };
+
+    const autoSave = () => {
+      const currentChapter = books[currentBookIndex].chapters[currentChapterIndex];
+      currentChapter.content = document.getElementById('chapterContent').value;
+      saveToDrive('books.json', books);
+    };
+
+    const renderImages = () => {
+      const currentChapter = books[currentBookIndex].chapters[currentChapterIndex];
+      const chapterImages = document.getElementById('chapterImages');
+      chapterImages.innerHTML = '';
+      currentChapter.images.forEach((image) => {
+        const img = document.createElement('img');
+        img.src = image;
+        chapterImages.appendChild(img);
       });
     };
 
-    const renderNotes = () => {
-      notesDiv.innerHTML = '';
-      if (currentSectionIndex === null) return;
-      books[currentBookIndex].chapters[currentChapterIndex].sections[currentSectionIndex].notes.forEach(note => {
-        const div = document.createElement('div');
-        div.className = 'note';
-        div.innerHTML = `<p>${note.text}</p>${note.image ? `<img src="${note.image}" alt="Note Image">` : ''}`;
-        notesDiv.appendChild(div);
-      });
+    const uploadImage = async () => {
+      const file = document.getElementById('imageInput').files[0];
+      if (!file) return;
+      const imageUrl = await uploadImageToDrive(file);
+      const currentChapter = books[currentBookIndex].chapters[currentChapterIndex];
+      currentChapter.images.push(imageUrl);
+      saveToDrive('books.json', books);
+      renderImages();
     };
 
-    const addBook = () => {
-      const name = document.getElementById('bookName').value.trim();
-      if (!name) return alert('Book name is required!');
-      books.push({ name, chapters: [] });
-      saveData();
-      renderBooks();
-    };
-
-    const addChapter = () => {
-      if (currentBookIndex === null) return alert('Select a book first!');
-      const name = document.getElementById('chapterName').value.trim();
-      if (!name) return alert('Chapter name is required!');
-      books[currentBookIndex].chapters.push({ name, sections: [] });
-      saveData();
-      renderChapters();
-    };
-
-    const addSection = () => {
-      if (currentChapterIndex === null) return alert('Select a chapter first!');
-      const name = document.getElementById('sectionName').value.trim();
-      if (!name) return alert('Section name is required!');
-      books[currentBookIndex].chapters[currentChapterIndex].sections.push({ name, notes: [] });
-      saveData();
-      renderSections();
-    };
-
-    const addNote = () => {
-      if (currentSectionIndex === null) return alert('Select a section first!');
-      const text = document.getElementById('noteText').value.trim();
-      const imageInput = document.getElementById('imageInput');
-      const file = imageInput.files[0];
-      const reader = new FileReader();
-
-      reader.onload = () => {
-        const image = file ? reader.result : null;
-        books[currentBookIndex].chapters[currentChapterIndex].sections[currentSectionIndex].notes.push({ text, image });
-        saveData();
-        renderNotes();
-        document.getElementById('noteText').value = '';
-        imageInput.value = '';
-      };
-
-      if (file) reader.readAsDataURL(file);
-      else reader.onload();
-    };
-
-    const selectBook = index => {
-      currentBookIndex = index;
-      currentChapterIndex = null;
-      currentSectionIndex = null;
-      renderChapters();
-      renderSections();
-      renderNotes();
-    };
-
-    const selectChapter = index => {
-      currentChapterIndex = index;
-      currentSectionIndex = null;
-      renderSections();
-      renderNotes();
-    };
-
-    const selectSection = index => {
-      currentSectionIndex = index;
-      renderNotes();
-    };
-
-    loadData();
+    // Load Books on Start
+    (async () => {
+      const data = await loadFromDrive('books.json');
+      books = data || [];
+      goToHome();
+    })();
   </script>
 </body>
 </html>
