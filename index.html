@@ -1,716 +1,179 @@
-
-<!--IMG_7671.JPG-->
-<div class="image-container" data-image="IMG_7671.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7671.JPG" src="https://lh3.google.com/u/0/d/1dvvXZAV6mgJMQ4ssLi5w-ZSterNxNj9M=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7671.JPG</div>
-    <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Structured Notes App</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1 { text-align: center; }
+    #container { display: flex; gap: 20px; }
+    .panel { width: 30%; border: 1px solid #ccc; padding: 10px; border-radius: 5px; }
+    .panel h2 { font-size: 1.2rem; }
+    textarea, input[type="text"] { width: 100%; margin-bottom: 10px; padding: 5px; }
+    img { max-width: 100%; margin-top: 10px; }
+    button { padding: 5px 10px; margin-right: 5px; }
+  </style>
+</head>
+<body>
+  <h1>Structured Notes App</h1>
+  <div id="container">
+    <div class="panel">
+      <h2>Books</h2>
+      <input type="text" id="bookName" placeholder="Book Name">
+      <button onclick="addBook()">Add Book</button>
+      <ul id="bookList"></ul>
     </div>
-
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
-
-<!--IMG_7673.JPG-->
-<div class="image-container" data-image="IMG_7673.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7673.JPG" src="https://lh3.google.com/u/0/d/1owYnBVAEWHFRcv1uZKhRtCWmY53YqyIY=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7673.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
+    <div class="panel">
+      <h2>Chapters</h2>
+      <input type="text" id="chapterName" placeholder="Chapter Name">
+      <button onclick="addChapter()">Add Chapter</button>
+      <ul id="chapterList"></ul>
     </div>
-
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
-
-<!--IMG_7676.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7676.JPG" src="https://lh3.google.com/u/0/d/12CP5UMbwUn4YFZgxeo-v7HXjs9cutTHG=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7676.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
+    <div class="panel">
+      <h2>Sections</h2>
+      <input type="text" id="sectionName" placeholder="Section Name">
+      <button onclick="addSection()">Add Section</button>
+      <ul id="sectionList"></ul>
     </div>
-
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
   </div>
-</div>
-
-<!--IMG_7675.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7675.JPG" src="https://lh3.google.com/u/0/d/1HjRS0udBP8NI0YIrMXU73xjZUhc4CA40=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7675.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
-
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
-
-<!--IMG_7677.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7677.JPG" src="https://lh3.google.com/u/0/d/1sNuyHrpywipo3cpO2GEEO2rM7c08_Eri=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7677.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
-
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
-
-<!--IMG_7683.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7683.JPG" src="https://lh3.google.com/u/0/d/1ZbY6J37etOpPUahRL_t0dLxwyY_BAoAe=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7683.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
-
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
-
-<!--IMG_7688.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7688.JPG" src="https://lh3.google.com/u/0/d/18z4Aw_Lhgpdu4nMruSPz1tYEdczMpvMf=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7688.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
-
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
-
-<!--IMG_7690.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7690.JPG" src="https://lh3.google.com/u/0/d/1lESC0kHeQ3xLipjMSXsaE82TtS4xxDh6=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7690.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
-
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
-
-<!--IMG_7694.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7694.JPG" src="https://lh3.google.com/u/0/d/1-NxSM3ujAiHEV7m97WIsvRjbQlTjqHqz=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7694.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
-
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
-
-<!--IMG_7697.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7697.JPG" src="https://lh3.google.com/u/0/d/15Oqo9j9MOGfX2Nu4CCwbaaHQWVqeb7US=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7697.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
-
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
-
-<!--IMG_7695.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7695.JPG" src="https://lh3.google.com/u/0/d/1big63vrm6G9EoKfxCPocb1uZJOV26K3m=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7695.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
-
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
-
-<!--IMG_7703.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7703.JPG" src="https://lh3.google.com/u/0/d/14XObU7D0s7Ws49YettbTzcQKTdCBTMRW=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7703.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
-
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
-
-<!--IMG_7701.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7701.JPG" src="https://lh3.google.com/u/0/d/1LR7DN7xtmFDqoIH-CNaDFo-8Ca9ZHu4o=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7701.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
-
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
-
-<!--IMG_7699.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7699.JPG" src="https://lh3.google.com/u/0/d/1Nqi43ZOT2NV4EmEpcfx7gIYVjoNWFeD8=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7699.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
-
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
-
-<!--IMG_7702.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7702.JPG" src="https://lh3.google.com/u/0/d/1jkj2N5yjrTTgukIonCx5uJFPul1UeMDA=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7702.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
-
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
-  
- 
- <!--IMG_7713.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7713.JPG" src="https://lh3.google.com/u/0/d/16eqvHdFJdnR2u87cmNCL2UpwX23Drvu2=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7713.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
-
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
-  
-  <!--IMG_7712.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7712.JPG" src="https://lh3.google.com/u/0/d/16S-22Q_Nt9q7ishKVH1frcj3KJ8X7N9K" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7712.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
-
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div> 
-  
-    <!--IMG_7707.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7707.JPG" src="https://lh3.google.com/u/0/d/1ZVKgzHrp_lzy6Rsm9kdNIDMjwnPv23Hf" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7707.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
-
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div> 
-  
-     <!--IMG_7710.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7710.JPG" src="https://lh3.google.com/u/0/d/1F7y3U5AlNb3tzgCPqQpkPbUVq0QlduSz" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7710.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
-
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>  
-  
-  
-       <!--IMG_7712.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7712.JPG" src="https://lh3.google.com/u/0/d/16S-22Q_Nt9q7ishKVH1frcj3KJ8X7N9K" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7712.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
-
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
-  
-</div>
-
-<h1> 20 January </h1>
-<div style="background-color: #f9f9f9; box-sizing: border-box; padding: 20px; width: 100%;">
-
-<!--IMG_7722.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7722.JPG" src="https://lh3.google.com/u/0/d/1cFlwun5Kww7WRdsp_8fjVG2bj33zth-M=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7722.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
-
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
-
-<!--IMG_7724.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7724.JPG" src="https://lh3.google.com/u/0/d/1cf9Ru1f8MpMdJYNKVkv6uSZlJwAe4pEh=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7724.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
-
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
-  
+  <div class="panel" style="margin-top: 20px;">
+    <h2>Notes</h2>
+    <textarea id="noteText" placeholder="Write your note here..."></textarea>
+    <input type="file" id="imageInput">
+    <button onclick="addNote()">Add Note</button>
+    <div id="notes"></div>
   </div>
 
-<h1> 21 January </h1>
-<div style="background-color: #f9f9f9; box-sizing: border-box; padding: 20px; width: 100%;">
+  <script>
+    let books = [];
+    let currentBookIndex = null;
+    let currentChapterIndex = null;
+    let currentSectionIndex = null;
 
- <!--IMG_7730.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7730.JPG" src="https://lh3.google.com/u/0/d/1V49URBoXh5Amk-_dNZ-sfP6SywcK175r=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7730.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
+    const bookList = document.getElementById('bookList');
+    const chapterList = document.getElementById('chapterList');
+    const sectionList = document.getElementById('sectionList');
+    const notesDiv = document.getElementById('notes');
 
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
+    const saveData = () => localStorage.setItem('notesAppData', JSON.stringify(books));
+    const loadData = () => {
+      const data = JSON.parse(localStorage.getItem('notesAppData'));
+      if (data) books = data;
+      renderBooks();
+    };
 
-<!--IMG_7728.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7728.JPG" src="https://lh3.google.com/u/0/d/1k1pb7dGBxHfdTLArtGGY61eJBZIDI4yR=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7728.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
+    const renderBooks = () => {
+      bookList.innerHTML = '';
+      books.forEach((book, index) => {
+        const li = document.createElement('li');
+        li.textContent = book.name;
+        li.onclick = () => selectBook(index);
+        bookList.appendChild(li);
+      });
+    };
 
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
+    const renderChapters = () => {
+      chapterList.innerHTML = '';
+      if (currentBookIndex === null) return;
+      books[currentBookIndex].chapters.forEach((chapter, index) => {
+        const li = document.createElement('li');
+        li.textContent = chapter.name;
+        li.onclick = () => selectChapter(index);
+        chapterList.appendChild(li);
+      });
+    };
 
-<!--IMG_7733.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7733.JPG" src="https://lh3.google.com/u/0/d/1Nuzs9D_22aQfCJipzm3MyPBNLnUsyFWu=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7733.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
+    const renderSections = () => {
+      sectionList.innerHTML = '';
+      if (currentChapterIndex === null) return;
+      books[currentBookIndex].chapters[currentChapterIndex].sections.forEach((section, index) => {
+        const li = document.createElement('li');
+        li.textContent = section.name;
+        li.onclick = () => selectSection(index);
+        sectionList.appendChild(li);
+      });
+    };
 
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
+    const renderNotes = () => {
+      notesDiv.innerHTML = '';
+      if (currentSectionIndex === null) return;
+      books[currentBookIndex].chapters[currentChapterIndex].sections[currentSectionIndex].notes.forEach(note => {
+        const div = document.createElement('div');
+        div.className = 'note';
+        div.innerHTML = `<p>${note.text}</p>${note.image ? `<img src="${note.image}" alt="Note Image">` : ''}`;
+        notesDiv.appendChild(div);
+      });
+    };
 
-<!--IMG_7738.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7738.JPG" src="https://lh3.google.com/u/0/d/16HmTxonP7mDqpIwskGw0btZ7kpycPTUG=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7738.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
+    const addBook = () => {
+      const name = document.getElementById('bookName').value.trim();
+      if (!name) return alert('Book name is required!');
+      books.push({ name, chapters: [] });
+      saveData();
+      renderBooks();
+    };
 
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
+    const addChapter = () => {
+      if (currentBookIndex === null) return alert('Select a book first!');
+      const name = document.getElementById('chapterName').value.trim();
+      if (!name) return alert('Chapter name is required!');
+      books[currentBookIndex].chapters.push({ name, sections: [] });
+      saveData();
+      renderChapters();
+    };
 
-<!--IMG_7739.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7739.JPG" src="https://lh3.google.com/u/0/d/1Rky6J6I9fedFGZFrTj7nH4xTqTub7qNz=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7739.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
+    const addSection = () => {
+      if (currentChapterIndex === null) return alert('Select a chapter first!');
+      const name = document.getElementById('sectionName').value.trim();
+      if (!name) return alert('Section name is required!');
+      books[currentBookIndex].chapters[currentChapterIndex].sections.push({ name, notes: [] });
+      saveData();
+      renderSections();
+    };
 
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
+    const addNote = () => {
+      if (currentSectionIndex === null) return alert('Select a section first!');
+      const text = document.getElementById('noteText').value.trim();
+      const imageInput = document.getElementById('imageInput');
+      const file = imageInput.files[0];
+      const reader = new FileReader();
 
-<!--IMG_7737.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7737.JPG" src="https://lh3.google.com/u/0/d/1TGw3ZtP7Wu41GsIg7aoYKHgGW5AmHcKJ=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7737.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
+      reader.onload = () => {
+        const image = file ? reader.result : null;
+        books[currentBookIndex].chapters[currentChapterIndex].sections[currentSectionIndex].notes.push({ text, image });
+        saveData();
+        renderNotes();
+        document.getElementById('noteText').value = '';
+        imageInput.value = '';
+      };
 
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
+      if (file) reader.readAsDataURL(file);
+      else reader.onload();
+    };
 
-<!--IMG_7742.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7742.JPG" src="https://lh3.google.com/u/0/d/10fB59sukie-67iW9ul6TEuvLBW4hMXAF=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7742.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
+    const selectBook = index => {
+      currentBookIndex = index;
+      currentChapterIndex = null;
+      currentSectionIndex = null;
+      renderChapters();
+      renderSections();
+      renderNotes();
+    };
 
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
+    const selectChapter = index => {
+      currentChapterIndex = index;
+      currentSectionIndex = null;
+      renderSections();
+      renderNotes();
+    };
 
-<!--IMG_7743.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7743.JPG" src="https://lh3.google.com/u/0/d/1M4hgDVaEcfooJsOsEqKWZ3qV8zjzZTYv=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7743.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
+    const selectSection = index => {
+      currentSectionIndex = index;
+      renderNotes();
+    };
 
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
-
-<!--IMG_7747.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7747.JPG" src="https://lh3.google.com/u/0/d/1T3o6HlClQCZRQuo3CPXuVT2zKUvDIOgz=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7747.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
-
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
-
-<!--IMG_7750.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7750.JPG" src="https://lh3.google.com/u/0/d/17E387NXnYdGJEbKLdG9aXVQGZ1Fjhy8q=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7750.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
-
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
-
-<!--IMG_7749.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7749.JPG" src="https://lh3.google.com/u/0/d/1Uy8MD1rguyCeuTDU6-xgoC44XFgeBd_e=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7749.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
-
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
-
-<!--IMG_7751.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7751.JPG" src="https://lh3.google.com/u/0/d/1n8y7I1g7-Dlb2yCqOAK440dNO3-1vcSR=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7751.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
-
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
-
-<!--IMG_7752.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7752.JPG" src="https://lh3.google.com/u/0/d/1oZBauLqsLL64bqMGZjqnT3f1p-5CC250=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7752.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
-
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
-
-<!--IMG_7748.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7748.JPG" src="https://lh3.google.com/u/0/d/1zGW3Ciro0391OXpq4o3FumUNzsWPTemL=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7748.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
-
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
-
-<!--IMG_7757.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7757.JPG" src="https://lh3.google.com/u/0/d/1p9dEfNhBw36e57vfx4keBPExdw3e_U41=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7757.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
-
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
-
-<!--IMG_7758.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7758.JPG" src="https://lh3.google.com/u/0/d/1w9QR2_gAq77nZVApNcX4oB1bwGqFOtna=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7758.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
-
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
-
-</div>
-
-<h1>26 January 2024 </h1>
-<div style="background-color: #f9f9f9; box-sizing: border-box; padding: 20px; width: 100%;">
-  
-<!--IMG_7761.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7761.JPG" src="https://lh3.google.com/u/0/d/15hXo4u4X7PfTI_qwLf1xsxylPnCgPxJb=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7761.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
-
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
-
-<!--IMG_7760.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7760.JPG" src="https://lh3.google.com/u/0/d/1KT2D0oaN8Lv3g80xly8nmh2GtBQc7O2k=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7760.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
-
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
-
-<!--IMG_7759.JPG-->
-<div class="image-container" data-image="IMG_7670.JPG" style="background-color: #f9f9f9; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; clear: both; margin-bottom: 20px; overflow: hidden; padding: 10px; text-align: center;">
-  <img alt="IMG_7759.JPG" src="https://lh3.google.com/u/0/d/1tbQ4Q0SsYibjPJbSJEZvrifQrbkpTVfz=s2048" style="border-radius: 8px; display: block; height: auto; margin-bottom: 10px; width: 100%;" />
-  <div style="color: #333333; font-size: 16px; font-weight: bold; padding: 5px 0px;">IMG_7759.JPG</div>
-      <!--Comments Section-->
-  <div class="comments-section" style="margin-top: 15px; text-align: left;">
-    <!--Comment Box-->
-    <div class="comment-box" style="display: flex; gap: 10px; margin-bottom: 10px;">
-      <input class="comment-input" style="border-radius: 4px; border: 1px solid rgb(221, 221, 221); flex: 1 1 0%; padding: 8px;" type="text" />
-      <button onclick="addComment(this)" style="background-color: #4caf50; border-radius: 4px; border: none; color: white; cursor: pointer; padding: 8px 12px;">Submit</button>
-    </div>
-
-    <!--Comments List-->
-    <div class="comments-list" style="border-top: 1px solid rgb(221, 221, 221); max-height: 300px; overflow-y: auto; padding-top: 10px;"></div>
-  </div>
-</div>
-
-  
+    loadData();
+  </script>
+</body>
+</html>
